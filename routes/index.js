@@ -56,6 +56,7 @@ router.route('/products')
  product.description = req.body.description;
  product.price = req.body.price;
  product.variants = req.body.variants;
+ product.imgPath = req.body.imgPath;
 product.save(function(err) {
  if (err)
  res.send(err);
@@ -75,6 +76,8 @@ product.save(function(err) {
  (req.body.name) ? product.name = req.body.name : null;
  (req.body.description) ? product.description = req.body.description : null;
  (req.body.price) ? product.price = req.body.price : null;
+ (req.body.variants) ? product.variants = req.body.variants : null;
+ (req.body.imgPath) ? product.imgPath = req.body.imgPath : null;
  //save product
  product.save(function(err) {
  if (err)
