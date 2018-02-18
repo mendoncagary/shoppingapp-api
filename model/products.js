@@ -16,7 +16,7 @@ var ProductsSchema = new Schema({
  name: String,
  description: String,
  price: Number,
- imagePath: String
+ imagePath: String,
  variants: [variantsSchema]
 });
 //export our module to use in server.js

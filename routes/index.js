@@ -7,6 +7,7 @@ mongoose.connect('mongodb://garylm:asdfg@ds263137.mlab.com:63137/shopping-app')
 
 var Login = require('../model/logins');
 var Product = require('../model/products');
+var Order = require('../model/orders');
 
 
 /* GET home page. */
@@ -95,5 +96,33 @@ product.save(function(err) {
  res.json({ message: 'Product has been deleted' })
  })
  });
+
+
+router.route('/orders')
+ 
+.get(function(req, res) {
+ Order.find(function(err, orders) {
+ if (err)
+ res.send(err);
+ res.json(orders)
+ });
+ })
+ 
+ .post(function(req, res) {
+ var order = new Order();
+
+ order.customer_id = req.body.id;
+ order.totalCost = req.body.totalCost;
+ order.customer_name = req.body.name;
+ order.customer_address = req.body.address;
+ order.typeOfDelivery = req.body.typeOfDelivery;
+order.save(function(err) {
+ if (err)
+ res.send(err);
+console	.log("sdasda")
+ res.json({ message: 'Order successfully placed!' });
+ });
+ });
+
 
 module.exports = router;

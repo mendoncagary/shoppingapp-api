@@ -5,9 +5,10 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var variantsSchema = new Schema({
-    variations: String,
-    inventory: Number
+var productsSchema = new Schema({
+    name: String,
+    size: Number,
+    cost: Number
   });
   
 //create new instance of the mongoose.schema. the schema takes an 
@@ -15,8 +16,17 @@ var variantsSchema = new Schema({
 var OrdersSchema = new Schema({
  name: String,
  totalCost: Number,
- customer_id: Number,
- variants: [variantsSchema]
+ customer_id: String,
+ customer_name: String,
+ customer_address: String,
+ typeOfDelivery: String,
+ products: [productsSchema]
 });
 //export our module to use in server.js
 module.exports = mongoose.model('Orders', OrdersSchema);
+
+
+
+{
+
+}
